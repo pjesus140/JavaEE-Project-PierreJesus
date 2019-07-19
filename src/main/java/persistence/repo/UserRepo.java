@@ -27,7 +27,7 @@ public class UserRepo {
 	
 	@Transactional(value = TxType.SUPPORTS)
 	public String CheckLogIn(String user) {
-		TypedQuery<User> query = this.manager.createQuery("SELECT m FROM Movie m", User.class);
+		TypedQuery<User> query = this.manager.createQuery("SELECT u FROM User u", User.class);
 		return this.gson.getJSONForObject(query.getResultList());
 	}
 	

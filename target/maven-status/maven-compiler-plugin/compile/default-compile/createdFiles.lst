@@ -1,0 +1,6 @@
+rest\JAXActivator.class
+persistence\repo\UserRepo.class
+rest\UserController.class
+util\JSONUtil.class
+service\UserService.class
+persistence\domain\User.class
