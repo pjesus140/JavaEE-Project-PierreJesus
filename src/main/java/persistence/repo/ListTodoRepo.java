@@ -33,7 +33,7 @@ public class ListTodoRepo {
 	}
 	
 	
-	public String updateUsers(long listId, String listsTodo) {
+	public String updateList(long listId, String listsTodo) {
 		ListsTodo current = this.manager.find(ListsTodo.class, listId);
 		ListsTodo newList = this.gson.getObjectForJSON(listsTodo, ListsTodo.class);
 		current.setListName(newList.getListName());
@@ -42,7 +42,7 @@ public class ListTodoRepo {
 		return "Success for: "+ current.getListName();
 	}
 	
-	public String deleteUser(long listId) {
+	public String deleteList(long listId) {
 		this.manager.remove(this.manager.find(ListsTodo.class, listId));
 		return "Deleted List";
 	}
