@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import persistence.domain.ListsTodo;
-
 import persistence.domain.User;
 import util.JSONUtil;
 
@@ -20,15 +19,22 @@ public class ListTodoRepo {
 
 	@Inject
 	private JSONUtil gson;
+	
+	@Inject
+	private UserRepo repo;
 
-	public String CreateList(String listsTodo) {
-		this.manager.persist(this.gson.getObjectForJSON(listsTodo, ListsTodo.class));
+	public String CreateList(Long userId,String listsTodo) {
+		
+		ListsTodo newList = this.gson.getObjectForJSON(listsTodo, ListsTodo.class);
+		newList.setUser(userId);
+		this.manager.persist(newList);
+		
 		return "Success for:" + this.gson.getObjectForJSON(listsTodo, ListsTodo.class).getListName();
 	}
 
 	@Transactional(value = TxType.SUPPORTS)
 	public String getAllLists() {
-		TypedQuery<ListsTodo> query = this.manager.createQuery("SELECT m FROM Movie m", ListsTodo.class);
+		TypedQuery<ListsTodo> query = this.manager.createQuery("SELECT l FROM ListsTodo l", ListsTodo.class);
 		return this.gson.getJSONForObject(query.getResultList());
 	}
 	
