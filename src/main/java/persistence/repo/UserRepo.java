@@ -22,11 +22,11 @@ public class UserRepo {
 	
 	public String createUser(String user) {
 		this.manager.persist(this.gson.getObjectForJSON(user, User.class));
-		return "Success:"+user;
+		return "Success for:"+this.gson.getObjectForJSON(user, User.class).getUsername();
 	}
 	
 	@Transactional(value = TxType.SUPPORTS)
-	public String getAllUsers() {
+	public String CheckLogIn(String user) {
 		TypedQuery<User> query = this.manager.createQuery("SELECT m FROM Movie m", User.class);
 		return this.gson.getJSONForObject(query.getResultList());
 	}
@@ -36,12 +36,12 @@ public class UserRepo {
 		User newUser = this.gson.getObjectForJSON(user, User.class);
 		current.setUsername(newUser.getUsername());
 		this.manager.persist(current);
-		return "Success";
+		return "Success for: "+ current.getUsername();
 	}
 	
 	public String deleteUser(long userId) {
 		this.manager.remove(this.manager.find(User.class, userId));
-		return "Success:"+this.manager.find(User.class, userId);
+		return "Success for:"+this.manager.find(User.class, userId).getUsername();
 	}
 	
 
