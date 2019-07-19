@@ -4,3 +4,4 @@ rest\UserController.class
 util\JSONUtil.class
 service\UserService.class
 persistence\domain\User.class
+persistence\domain\ListsTodo.class
