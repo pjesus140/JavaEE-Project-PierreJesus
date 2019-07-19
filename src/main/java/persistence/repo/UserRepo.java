@@ -41,7 +41,7 @@ public class UserRepo {
 	
 	public String deleteUser(long userId) {
 		this.manager.remove(this.manager.find(User.class, userId));
-		return "Success for:"+this.manager.find(User.class, userId).getUsername();
+		return "Deleted";
 	}
 	
 

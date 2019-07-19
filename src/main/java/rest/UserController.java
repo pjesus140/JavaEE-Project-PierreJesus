@@ -29,7 +29,7 @@ public class UserController {
 	
 	@POST
 	@Path("/update/{userId}")
-	public String updateUsers(@PathParam("UserId") long userId, String user) {
+	public String updateUsers(@PathParam("userId") long userId, String user) {
 		return this.serv.updateUsers(userId, user);
 	}
 	
