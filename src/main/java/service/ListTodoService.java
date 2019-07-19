@@ -9,9 +9,9 @@ public class ListTodoService {
 	@Inject
 	private ListTodoRepo repo;
 
-	public String CreateList(String listsTodo) {
+	public String CreateList(Long userId,String listsTodo) {
 
-		return this.repo.CreateList(listsTodo);
+		return this.repo.CreateList(userId,listsTodo);
 	}
 
 	public String getAllLists() {
