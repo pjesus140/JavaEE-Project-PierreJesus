@@ -35,13 +35,14 @@ public class UserRepo {
 		User current = this.manager.find(User.class, userId);
 		User newUser = this.gson.getObjectForJSON(user, User.class);
 		current.setUsername(newUser.getUsername());
+		current.setPass(newUser.getPass());
 		this.manager.persist(current);
 		return "Success for: "+ current.getUsername();
 	}
 	
 	public String deleteUser(long userId) {
 		this.manager.remove(this.manager.find(User.class, userId));
-		return "Deleted";
+		return "Deleted User";
 	}
 	
 
