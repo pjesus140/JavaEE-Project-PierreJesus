@@ -16,14 +16,13 @@ public class ListsTodo {
 
 	@ManyToOne
 	private User user;
+	
 
 	public ListsTodo(long listId, String listName, Long userId) {
 		super();
-		User newUser = new User();
-		newUser.setUserId(userId);
 		this.listId = listId;
 		this.listName = listName;
-		this.user = newUser;
+//		this.userId = userId;
 	}
 
 	public ListsTodo() {
@@ -46,15 +45,15 @@ public class ListsTodo {
 		this.listName = listName;
 	}
 
-	public Long getUser() {
+	public User getUser() {
 		
-		return user.getUserId();
+		return user;
 	}
 	
 	
 
-	public void setUser(Long userId) {
-		this.user.setUserId(userId);
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
