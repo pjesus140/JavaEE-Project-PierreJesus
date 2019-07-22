@@ -22,7 +22,7 @@ public class ListsTodo {
 		super();
 		this.listId = listId;
 		this.listName = listName;
-//		this.userId = userId;
+
 	}
 
 	public ListsTodo() {
