@@ -33,12 +33,12 @@ public class TaskRepo {
 	}
 	
 	@Transactional(value = TxType.SUPPORTS)
-	public String getAllLists() {
+	public String getAllTasks() {
 		TypedQuery<Tasks> query = this.manager.createQuery("SELECT t FROM Tasks t", Tasks.class);
 		return this.gson.getJSONForObject(query.getResultList());
 	}
 	
-	public String updateList(long taskId, String taskText) {
+	public String updateTask(long taskId, String taskText) {
 		Tasks current = this.manager.find(Tasks.class, taskId);
 		Tasks newTask = this.gson.getObjectForJSON(taskText, Tasks.class);
 		current.setTaskText(newTask.getTaskText());
@@ -47,7 +47,7 @@ public class TaskRepo {
 		return "Success for new text: "+ current.getTaskText();
 	}
 	
-	public String deleteList(long taskId) {
+	public String deleteTask(long taskId) {
 		this.manager.remove(this.manager.find(Tasks.class, taskId));
 		return "Deleted List";
 	}
