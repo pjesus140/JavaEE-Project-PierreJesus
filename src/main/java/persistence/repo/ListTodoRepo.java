@@ -20,13 +20,12 @@ public class ListTodoRepo {
 	@Inject
 	private JSONUtil gson;
 	
-	@Inject
-	private UserRepo repo;
+	
 
 	public String CreateList(Long userId,String listsTodo) {
-		
+		User listOwner = this.manager.find(User.class, userId);
 		ListsTodo newList = this.gson.getObjectForJSON(listsTodo, ListsTodo.class);
-		newList.setUser(userId);
+		newList.setUser(listOwner);
 		this.manager.persist(newList);
 		
 		return "Success for:" + this.gson.getObjectForJSON(listsTodo, ListsTodo.class).getListName();
