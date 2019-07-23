@@ -1,11 +1,14 @@
 persistence\repo\ListTodoRepo.class
 rest\ListTodoController.class
 util\JSONUtil.class
+persistence\repo\TaskRepo.class
 service\UserService.class
 service\ListTodoService.class
 persistence\domain\ListsTodo.class
 rest\JAXActivator.class
+rest\TaskController.class
 persistence\repo\UserRepo.class
 rest\UserController.class
+service\TaskService.class
 persistence\domain\Tasks.class
 persistence\domain\User.class

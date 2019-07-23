@@ -25,6 +25,10 @@ public class Tasks {
 		
 
 	}
+	
+	public Tasks() {
+		
+	}
 
 	public long getTaskId() {
 		return taskId;

@@ -9,7 +9,7 @@ import javax.ws.rs.PathParam;
 
 import service.UserService;
 
-@Path("/user")
+@Path("/Users")
 public class UserController {
 	
 	@Inject
