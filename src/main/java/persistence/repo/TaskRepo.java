@@ -9,7 +9,6 @@ import javax.transaction.Transactional.TxType;
 
 import persistence.domain.ListsTodo;
 import persistence.domain.Tasks;
-import persistence.domain.User;
 import util.JSONUtil;
 
 

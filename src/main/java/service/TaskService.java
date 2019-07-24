@@ -2,8 +2,7 @@ package service;
 
 import javax.inject.Inject;
 
-import persistence.domain.ListsTodo;
-import persistence.domain.Tasks;
+
 import persistence.repo.TaskRepo;
 
 public class TaskService {

@@ -22,13 +22,19 @@ public class UserRepo {
 	
 	public String createUser(String user) {
 		this.manager.persist(this.gson.getObjectForJSON(user, User.class));
-		return "Success for:"+this.gson.getObjectForJSON(user, User.class).getUsername();
+		return "{\"Success\":\"True\"}";
 	}
 	
 	@Transactional(value = TxType.SUPPORTS)
 	public String CheckLogIn(String user) {
+		
 		TypedQuery<User> query = this.manager.createQuery("SELECT u FROM User u", User.class);
-		return this.gson.getJSONForObject(query.getResultList());
+//		return this.gson.getJSONForObject(query.getResultList());
+		if(query == null) {
+			return "{\"Success\":\"Fail\"}";
+		}else
+			return "{\"Success\":\"True\"}";
+			
 	}
 	
 	public String updateUsers(long userId, String user) {

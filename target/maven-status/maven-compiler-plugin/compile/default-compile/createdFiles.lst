@@ -9,6 +9,7 @@ rest\JAXActivator.class
 rest\TaskController.class
 persistence\repo\UserRepo.class
 rest\UserController.class
+rest\CORSFilter.class
 service\TaskService.class
 persistence\domain\Tasks.class
 persistence\domain\User.class

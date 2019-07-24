@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import service.TaskService;
-import service.UserService;
+
 
 @Path("/Tasks")
 public class TaskController {

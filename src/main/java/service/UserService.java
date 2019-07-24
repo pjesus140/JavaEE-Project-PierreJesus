@@ -27,8 +27,5 @@ public class UserService {
 	public String deleteUser(long userId) {
 		return this.repo.deleteUser(userId);
 	}
-	
-	
-	
 
 }
