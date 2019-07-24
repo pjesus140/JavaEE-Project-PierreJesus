@@ -34,12 +34,12 @@ public class UserRepo {
 				"SELECT u FROM User u WHERE username='" + username + "'AND pass='" + pass + "'", User.class);
 		try {
 			if (query == null) {
-				return "{\"Success\":\"Fail\"}";
+				return "{\"Success\":\"False\"}";
 			} else {
 				return "{\"Success\":\"True\",\"userId\":\"" + query.getResultList().get(0).getUserId() + "\"}";
 			}
 		} catch (IndexOutOfBoundsException iobe) {
-			return "{\"Success\":\"Fail\"}";
+			return "{\"Success\":\"False\"}";
 		}
 
 		// return this.gson.getJSONForObject(query.getResultList());
@@ -59,6 +59,8 @@ public class UserRepo {
 		}
 
 	}
+	
+	
 
 	public String updateUsers(long userId, String user) {
 		User current = this.manager.find(User.class, userId);
@@ -69,9 +71,14 @@ public class UserRepo {
 		return "Success for: " + current.getUsername();
 	}
 
-	public String deleteUser(long userId) {
-		this.manager.remove(this.manager.find(User.class, userId));
-		return "Deleted User";
+	public String deleteUser(long userId,String userPass) {
+		User current = this.manager.find(User.class, userId);
+		if(current.getPass().equals(this.gson.getObjectForJSON(userPass, User.class).getPass())) {
+			
+			this.manager.remove(this.manager.find(User.class, userId));
+			return "{\"Success\":\"True\"}";
+		}
+		return "{\"Success\":\"False\"}";
 	}
 
 }

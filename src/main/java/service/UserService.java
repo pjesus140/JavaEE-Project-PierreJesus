@@ -30,8 +30,8 @@ public class UserService {
 
 	}
 
-	public String deleteUser(long userId) {
-		return this.repo.deleteUser(userId);
+	public String deleteUser(long userId,String userPass) {
+		return this.repo.deleteUser(userId,userPass);
 	}
 
 }
