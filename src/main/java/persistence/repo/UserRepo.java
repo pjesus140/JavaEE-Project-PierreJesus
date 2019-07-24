@@ -59,26 +59,42 @@ public class UserRepo {
 		}
 
 	}
-	
-	
 
-	public String updateUsers(long userId, String user) {
+	public String checkPass(long userId, String userPass) {
+
+		User current = this.manager.find(User.class, userId);
+
+		if (current.getPass().equals(this.gson.getObjectForJSON(userPass, User.class).getPass())) {
+			return "{\"Success\":\"True\"}";
+		} else {
+			return "{\"Success\":\"False\"}";
+
+		}
+
+	}
+
+	public String updateUsername(long userId, String user) {
 		User current = this.manager.find(User.class, userId);
 		User newUser = this.gson.getObjectForJSON(user, User.class);
 		current.setUsername(newUser.getUsername());
-		current.setPass(newUser.getPass());
 		this.manager.persist(current);
-		return "Success for: " + current.getUsername();
+		return "{\"Success\":\"True\"}";
 	}
 
-	public String deleteUser(long userId,String userPass) {
+	public String updatePass(long userId, String user) {
 		User current = this.manager.find(User.class, userId);
-		if(current.getPass().equals(this.gson.getObjectForJSON(userPass, User.class).getPass())) {
-			
-			this.manager.remove(this.manager.find(User.class, userId));
-			return "{\"Success\":\"True\"}";
-		}
-		return "{\"Success\":\"False\"}";
+		User newUser = this.gson.getObjectForJSON(user, User.class);
+
+		current.setPass(newUser.getPass());
+		this.manager.persist(current);
+		return "{\"Success\":\"True\"}";
+	}
+
+	public String deleteUser(long userId) {
+
+		this.manager.remove(this.manager.find(User.class, userId));
+		return "{\"Success\":\"True\"}";
+
 	}
 
 }

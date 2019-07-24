@@ -29,15 +29,27 @@ public class UserController {
 	}
 	
 	@POST
-	@Path("/update/{userId}")
-	public String updateUsers(@PathParam("userId") long userId, String user) {
-		return this.serv.updateUsers(userId, user);
+	@Path("/updateName/{userId}")
+	public String updateUsername(@PathParam("userId") long userId, String user) {
+		return this.serv.updateUsername(userId, user);
+	}
+	
+	@POST
+	@Path("/updatePass/{userId}")
+	public String updatePass(@PathParam("userId") long userId, String user) {
+		return this.serv.updatePass(userId, user);
+	}
+	
+	@POST
+	@Path("/CheckDel/{userId}")
+	public String CheckPass(@PathParam("userId") long userId, String userPass) {
+		return this.serv.CheckPass(userId, userPass);
 	}
 	
 	@DELETE
 	@Path("/delete/{userId}")
-	public String deleteUser(@PathParam("userId") long userId,String userPass) {
-		return this.serv.deleteUser(userId,userPass);
+	public String deleteUser(@PathParam("userId") long userId) {
+		return this.serv.deleteUser(userId);
 	}
 	
 
