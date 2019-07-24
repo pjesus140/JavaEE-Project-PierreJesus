@@ -10,7 +10,7 @@ public class UserService {
 	private UserRepo repo;
 
 	public String createUser(String user) {
-		if (this.repo.checkUsername(user)== true) {
+		if (this.repo.checkUsername(user) == true) {
 			return this.repo.createUser(user);
 
 		} else {
@@ -24,14 +24,29 @@ public class UserService {
 		return this.repo.checkLogIn(user);
 	}
 
-	public String updateUsers(long userId, String user) {
+	public String CheckPass(long userId, String userPass) {
 
-		return this.repo.updateUsers(userId, user);
+		return this.repo.checkPass(userId, userPass);
+	}
+
+	public String updateUsername(long userId, String user) {
+		if (this.repo.checkUsername(user) == true) {
+			return this.repo.updateUsername(userId, user);
+
+		} else {
+			return "{\"Success\":\"False\"}";
+		}
 
 	}
 
-	public String deleteUser(long userId,String userPass) {
-		return this.repo.deleteUser(userId,userPass);
+	public String updatePass(long userId, String user) {
+
+		return this.repo.updatePass(userId, user);
+
+	}
+
+	public String deleteUser(long userId) {
+		return this.repo.deleteUser(userId);
 	}
 
 }
