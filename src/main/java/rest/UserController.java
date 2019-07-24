@@ -21,7 +21,7 @@ public class UserController {
 		return this.serv.createUser(user);
 	}
 	
-	@GET
+	@POST
 	@Path("/Check")
 	public String CheckLogIn(String user) {
 		return this.serv.CheckLogIn(user);

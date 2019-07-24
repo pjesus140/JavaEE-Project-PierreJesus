@@ -27,13 +27,25 @@ public class UserRepo {
 	
 	@Transactional(value = TxType.SUPPORTS)
 	public String CheckLogIn(String user) {
-		
-		TypedQuery<User> query = this.manager.createQuery("SELECT u FROM User u", User.class);
-//		return this.gson.getJSONForObject(query.getResultList());
-		if(query == null) {
+		User aUser = this.gson.getObjectForJSON(user, User.class);
+		String username = aUser.getUsername();
+		String pass = aUser.getPass();
+		TypedQuery<User> query = this.manager.createQuery("SELECT u FROM User u WHERE username='"+username+"'AND pass='"+pass+"'", User.class);
+		try {
+			if(query == null) {
+				return "{\"Success\":\"Fail\"}";
+			}
+			else {
+				return "{\"Success\":\"True\",\"userId\":\""+query.getResultList().get(0).getUserId()+"\"}";
+			}
+		}
+		catch(IndexOutOfBoundsException iobe) {
 			return "{\"Success\":\"Fail\"}";
-		}else
-			return "{\"Success\":\"True\"}";
+		}
+		
+//		return this.gson.getJSONForObject(query.getResultList());
+		
+		
 			
 	}
 	
