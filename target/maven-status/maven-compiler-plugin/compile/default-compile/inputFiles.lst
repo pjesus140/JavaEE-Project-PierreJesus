@@ -8,6 +8,7 @@ C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\service\ListTodoServ
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\service\UserService.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\persistence\domain\ListsTodo.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\persistence\repo\ListTodoRepo.java
+C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\rest\CORSFilter.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\persistence\domain\Tasks.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\rest\TaskController.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\rest\JAXActivator.java
