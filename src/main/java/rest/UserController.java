@@ -18,13 +18,14 @@ public class UserController {
 	@POST
 	@Path("/create")
 	public String createUser(String user) {
+		
 		return this.serv.createUser(user);
 	}
 	
 	@POST
 	@Path("/Check")
-	public String CheckLogIn(String user) {
-		return this.serv.CheckLogIn(user);
+	public String checkLogIn(String user) {
+		return this.serv.checkLogIn(user);
 	}
 	
 	@POST
@@ -35,8 +36,8 @@ public class UserController {
 	
 	@DELETE
 	@Path("/delete/{userId}")
-	public String deleteUser(@PathParam("userId") long userId) {
-		return this.serv.deleteUser(userId);
+	public String deleteUser(@PathParam("userId") long userId,String userPass) {
+		return this.serv.deleteUser(userId,userPass);
 	}
 	
 
