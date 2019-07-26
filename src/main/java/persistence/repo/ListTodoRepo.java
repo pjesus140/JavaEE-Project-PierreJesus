@@ -32,8 +32,8 @@ public class ListTodoRepo {
 	}
 
 	@Transactional(value = TxType.SUPPORTS)
-	public String getAllLists() {
-		TypedQuery<ListsTodo> query = this.manager.createQuery("SELECT l FROM ListsTodo l", ListsTodo.class);
+	public String getAllLists(Long userId) {
+		TypedQuery<ListsTodo> query = this.manager.createQuery("SELECT l FROM ListsTodo l WHERE User_userId='" + userId + "'", ListsTodo.class);
 		return this.gson.getJSONForObject(query.getResultList());
 	}
 	

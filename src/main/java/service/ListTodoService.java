@@ -14,8 +14,8 @@ public class ListTodoService {
 		return this.repo.CreateList(userId,listsTodo);
 	}
 
-	public String getAllLists() {
-		return this.repo.getAllLists();
+	public String getAllLists(Long userId) {
+		return this.repo.getAllLists(userId);
 	}
 
 	public String updateList(long listId, String listsTodo) {
