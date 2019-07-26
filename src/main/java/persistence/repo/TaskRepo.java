@@ -28,7 +28,7 @@ public class TaskRepo {
 		Tasks newTask = this.gson.getObjectForJSON(taskText, Tasks.class);
 		newTask.setListsTodo(taskOwner);
 		this.manager.persist(newTask);		
-		return null;
+		return "{\"Success\":\"True\"}";
 	}
 	
 	@Transactional(value = TxType.SUPPORTS)
@@ -48,7 +48,7 @@ public class TaskRepo {
 	
 	public String deleteTask(long taskId) {
 		this.manager.remove(this.manager.find(Tasks.class, taskId));
-		return "Deleted List";
+		return "Deleted Task";
 	}
 	
 	
