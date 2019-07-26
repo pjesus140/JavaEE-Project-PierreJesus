@@ -28,7 +28,7 @@ public class ListTodoRepo {
 		newList.setUser(listOwner);
 		this.manager.persist(newList);
 		
-		return "Success for:" + this.gson.getObjectForJSON(listsTodo, ListsTodo.class).getListName();
+		return "{\"Success\":\"True\"}";
 	}
 
 	@Transactional(value = TxType.SUPPORTS)
