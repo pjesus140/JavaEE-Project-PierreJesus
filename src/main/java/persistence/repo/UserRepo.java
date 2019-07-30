@@ -1,5 +1,7 @@
 package persistence.repo;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -7,6 +9,8 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
+import persistence.domain.ListsTodo;
+import persistence.domain.Tasks;
 import persistence.domain.User;
 import util.JSONUtil;
 
@@ -91,7 +95,20 @@ public class UserRepo {
 	}
 
 	public String deleteUser(long userId) {
+		int listId = 0;
+		TypedQuery<Tasks> queryTasks = this.manager.createQuery("SELECT t FROM Tasks t WHERE t.listsTodo.user.userId='" + userId + "'", Tasks.class);
 
+		List<Tasks> queryTasksList = queryTasks.getResultList();
+		for (Tasks x : queryTasksList) {
+			this.manager.remove(this.manager.find(Tasks.class, x.getTaskId()));
+		}
+		
+		TypedQuery<ListsTodo> query = this.manager.createQuery("SELECT l FROM ListsTodo l WHERE User_userId='" + userId + "'", ListsTodo.class);
+		
+		List<ListsTodo> queryList = query.getResultList();
+		for(ListsTodo x: queryList) {
+			this.manager.remove(this.manager.find(ListsTodo.class,x.getListId()));
+		}
 		this.manager.remove(this.manager.find(User.class, userId));
 		return "{\"Success\":\"True\"}";
 

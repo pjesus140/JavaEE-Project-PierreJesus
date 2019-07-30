@@ -22,9 +22,9 @@ public class ListTodoController {
 	}
 	
 	@GET
-	@Path("/getAll")
-	public String getAllLists() {
-		return this.serv.getAllLists();
+	@Path("/getAll/{userId}")
+	public String getAllLists(@PathParam("userId") Long userId) {
+		return this.serv.getAllLists(userId);
 	}
 	
 	@POST
