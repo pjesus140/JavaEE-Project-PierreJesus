@@ -32,8 +32,8 @@ public class TaskRepo {
 	}
 	
 	@Transactional(value = TxType.SUPPORTS)
-	public String getAllTasks() {
-		TypedQuery<Tasks> query = this.manager.createQuery("SELECT t FROM Tasks t", Tasks.class);
+	public String getAllTasks(Long listId) {
+		TypedQuery<Tasks> query = this.manager.createQuery("SELECT t FROM Tasks t WHERE ListsTodo_listId='"+listId+"'", Tasks.class);
 		return this.gson.getJSONForObject(query.getResultList());
 	}
 	
@@ -48,7 +48,7 @@ public class TaskRepo {
 	
 	public String deleteTask(long taskId) {
 		this.manager.remove(this.manager.find(Tasks.class, taskId));
-		return "Deleted Task";
+		return "{\"Success\":\"True\"}";
 	}
 	
 	

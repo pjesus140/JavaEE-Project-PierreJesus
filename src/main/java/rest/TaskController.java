@@ -26,9 +26,9 @@ public class TaskController {
 	}
 	
 	@GET
-	@Path("/getAll")
-	public String getAllTasks() {
-		return this.serv.getAllTasks();
+	@Path("/getAll/{listId}")
+	public String getAllTasks(@PathParam("listId")Long listId) {
+		return this.serv.getAllTasks(listId);
 	}
 	
 	@POST

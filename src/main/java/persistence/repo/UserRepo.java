@@ -40,7 +40,7 @@ public class UserRepo {
 			if (query == null) {
 				return "{\"Success\":\"False\"}";
 			} else {
-				return "{\"Success\":\"True\",\"userId\":\"" + query.getResultList().get(0).getUserId() + "\"}";
+				return "{\"Success\":\"True\",\"userId\":\"" + query.getResultList().get(0).getUserId() + "\",\"username\":\"" + query.getResultList().get(0).getUsername()+"\"}";
 			}
 		} catch (IndexOutOfBoundsException iobe) {
 			return "{\"Success\":\"False\"}";
