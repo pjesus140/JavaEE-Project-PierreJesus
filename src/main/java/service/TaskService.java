@@ -17,8 +17,8 @@ public class TaskService {
 		
 	}
 	
-	public String getAllTasks() {
-		return this.repo.getAllTasks();
+	public String getAllTasks(Long listId) {
+		return this.repo.getAllTasks(listId);
 	}
 	
 	public String updateTask(long taskId, String taskText) {
