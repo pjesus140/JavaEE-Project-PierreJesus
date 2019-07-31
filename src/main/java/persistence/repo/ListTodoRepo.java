@@ -45,7 +45,7 @@ public class ListTodoRepo {
 		current.setListName(newList.getListName());
 
 		this.manager.persist(current);
-		return "Success for: " + current.getListName();
+		return "{\"Success\":\"True\"}";
 	}
 
 	public String deleteList(long listId) {
