@@ -33,6 +33,7 @@ public class UserRepo {
 	public String checkLogIn(String user) {
 		User aUser = this.gson.getObjectForJSON(user, User.class);
 		String username = aUser.getUsername();
+		
 		String pass = aUser.getPass();
 		TypedQuery<User> query = this.manager.createQuery(
 				"SELECT u FROM User u WHERE username='" + username + "'AND pass='" + pass + "'", User.class);
@@ -53,6 +54,9 @@ public class UserRepo {
 	public boolean checkUsername(String user) {
 		User aUser = this.gson.getObjectForJSON(user, User.class);
 		String username = aUser.getUsername();
+		if(username.isEmpty()) {
+			return false;
+		}
 		TypedQuery<User> query = this.manager.createQuery("SELECT u FROM User u WHERE username='" + username + "'",
 				User.class);
 
