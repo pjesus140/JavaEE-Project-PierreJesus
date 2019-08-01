@@ -39,6 +39,10 @@ public class UserService {
 	}
 
 	public String updateUsername(long userId, String user) {
+		User aUser = this.gson.getObjectForJSON(user, User.class);
+		if(aUser.getUsername().isEmpty()) {
+			return "{\"Success\":\"False\"}";
+		}
 		if (this.repo.checkUsername(user) == true) {
 			return this.repo.updateUsername(userId, user);
 
@@ -49,6 +53,10 @@ public class UserService {
 	}
 
 	public String updatePass(long userId, String user) {
+		User aUser = this.gson.getObjectForJSON(user, User.class);
+		if(aUser.getPass().isEmpty()) {
+			return "{\"Success\":\"False\"}";
+		}
 
 		return this.repo.updatePass(userId, user);
 
