@@ -7,6 +7,7 @@ service\ListTodoService.class
 persistence\domain\ListsTodo.class
 rest\JAXActivator.class
 rest\TaskController.class
+persistence\repo\UserInterface.class
 persistence\repo\UserRepo.class
 rest\UserController.class
 rest\CORSFilter.class
