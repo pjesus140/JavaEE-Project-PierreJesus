@@ -3,6 +3,7 @@ C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\rest\UserController.
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\util\JSONUtil.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\persistence\repo\UserRepo.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\persistence\domain\User.java
+C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\persistence\repo\UserInterface.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\service\TaskService.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\service\ListTodoService.java
 C:\Users\Admin\git\JavaEE-Project-PierreJesus\src\main\java\service\UserService.java

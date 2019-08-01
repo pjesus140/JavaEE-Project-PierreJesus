@@ -15,7 +15,7 @@ import persistence.domain.User;
 import util.JSONUtil;
 
 @Transactional(value = TxType.REQUIRED)
-public class UserRepo {
+public class UserRepo implements UserInterface{
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
@@ -26,7 +26,7 @@ public class UserRepo {
 	public String createUser(String user) {
 
 		this.manager.persist(this.gson.getObjectForJSON(user, User.class));
-		return "{\"Success\":\"True\"}";
+		return SUCCESS;
 	}
 
 	@Transactional(value = TxType.SUPPORTS)
@@ -39,12 +39,12 @@ public class UserRepo {
 				"SELECT u FROM User u WHERE username='" + username + "'AND pass='" + pass + "'", User.class);
 		try {
 			if (query == null) {
-				return "{\"Success\":\"False\"}";
+				return FAILURE;
 			} else {
 				return "{\"Success\":\"True\",\"userId\":\"" + query.getResultList().get(0).getUserId() + "\",\"username\":\"" + query.getResultList().get(0).getUsername()+"\"}";
 			}
 		} catch (IndexOutOfBoundsException iobe) {
-			return "{\"Success\":\"False\"}";
+			return FAILURE;
 		}
 
 		// return this.gson.getJSONForObject(query.getResultList());
@@ -71,9 +71,9 @@ public class UserRepo {
 		User current = this.manager.find(User.class, userId);
 
 		if (current.getPass().equals(this.gson.getObjectForJSON(userPass, User.class).getPass())) {
-			return "{\"Success\":\"True\"}";
+			return SUCCESS;
 		} else {
-			return "{\"Success\":\"False\"}";
+			return FAILURE;
 
 		}
 
@@ -84,7 +84,7 @@ public class UserRepo {
 		User newUser = this.gson.getObjectForJSON(user, User.class);
 		current.setUsername(newUser.getUsername());
 		this.manager.persist(current);
-		return "{\"Success\":\"True\"}";
+		return SUCCESS;
 	}
 
 	public String updatePass(long userId, String user) {
@@ -93,7 +93,7 @@ public class UserRepo {
 
 		current.setPass(newUser.getPass());
 		this.manager.persist(current);
-		return "{\"Success\":\"True\"}";
+		return SUCCESS;
 	}
 
 	public String deleteUser(long userId) {
@@ -112,7 +112,7 @@ public class UserRepo {
 			this.manager.remove(this.manager.find(ListsTodo.class,x.getListId()));
 		}
 		this.manager.remove(this.manager.find(User.class, userId));
-		return "{\"Success\":\"True\"}";
+		return SUCCESS;
 
 	}
 
