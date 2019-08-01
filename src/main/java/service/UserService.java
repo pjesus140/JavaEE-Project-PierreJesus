@@ -2,17 +2,23 @@ package service;
 
 import javax.inject.Inject;
 
+import persistence.domain.User;
 import persistence.repo.UserRepo;
 import util.JSONUtil;
 
 public class UserService {
 	
-	
+	@Inject
+	private JSONUtil gson;
 
 	@Inject
 	private UserRepo repo;
 
 	public String createUser(String user) {
+		User aUser = this.gson.getObjectForJSON(user, User.class);
+		if(aUser.getUsername().isEmpty()||aUser.getPass().isEmpty()) {
+			return "{\"Success\":\"False\"}";
+		}
 		if (this.repo.checkUsername(user) == true) {
 			return this.repo.createUser(user);
 
