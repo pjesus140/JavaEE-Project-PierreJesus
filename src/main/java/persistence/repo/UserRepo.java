@@ -54,9 +54,7 @@ public class UserRepo {
 	public boolean checkUsername(String user) {
 		User aUser = this.gson.getObjectForJSON(user, User.class);
 		String username = aUser.getUsername();
-		if(username.isEmpty()) {
-			return false;
-		}
+		
 		TypedQuery<User> query = this.manager.createQuery("SELECT u FROM User u WHERE username='" + username + "'",
 				User.class);
 
